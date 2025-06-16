@@ -5,26 +5,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     xmlns:pages="clr-namespace:YOB.Pages"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
     Title="YOB">
 
-    <ShellContent
-        Title="Dashboard"
-        Icon="{StaticResource IconDashboard}"
-        ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="main" />
+    <TabBar>
+        <ShellContent
+            Title="Dashboard"
+            Icon="{StaticResource IconDashboard}"
+            ContentTemplate="{DataTemplate pages:MainPage}"
+            Route="main" />
 
-    <ShellContent
-        Title="Projects"
-        Icon="{StaticResource IconProjects}"
-        ContentTemplate="{DataTemplate pages:ProjectListPage}"
-        Route="projects" />
+        <ShellContent
+            Title="Projects"
+            Icon="{StaticResource IconProjects}"
+            ContentTemplate="{DataTemplate pages:ProjectListPage}"
+            Route="projects" />
 
-    <ShellContent
-        Title="Manage Meta"
-        Icon="{StaticResource IconMeta}"
-        ContentTemplate="{DataTemplate pages:ManageMetaPage}"
-        Route="manage" />
+        <ShellContent
+            Title="Manage Meta"
+            Icon="{StaticResource IconMeta}"
+            ContentTemplate="{DataTemplate pages:ManageMetaPage}"
+            Route="manage" />
+    </TabBar>
 
     <Shell.FlyoutFooter>
         <Grid Padding="15">
