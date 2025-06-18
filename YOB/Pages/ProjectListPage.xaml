@@ -18,34 +18,19 @@
                 Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
     <Grid>
-      <ScrollView>
-        <VerticalStackLayout 
-            BindableLayout.ItemsSource="{Binding Projects}" 
-            Margin="{StaticResource LayoutPadding}" 
-            Spacing="{StaticResource LayoutSpacing}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate x:DataType="models:Project">
-                    <Border>
+        <ScrollView>
+            <VerticalStackLayout 
+                BindableLayout.ItemsSource="{Binding Projects}" 
+                Margin="{StaticResource LayoutPadding}" 
+                Spacing="{StaticResource LayoutSpacing}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Project">
+                        <Border>
                             <Grid>
                                 <ScrollView>
                                     <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                                        <sf:SfTextInputLayout 
-                                            Hint="Name" >
-                                            <Entry
-                                                Text="{Binding Name}" />
-                                        </sf:SfTextInputLayout>
-
-                                        <sf:SfTextInputLayout 
-                                            Hint="Description">
-                                            <Entry
-                                                Text="{Binding Description}" />
-                                        </sf:SfTextInputLayout>
-
-                                        <sf:SfTextInputLayout 
-                                            Hint="Category">
-                                            <Picker 
-                                                SelectedItem="{Binding Category}" />
-                                        </sf:SfTextInputLayout>
+                                        <Label Text="{Binding Name}" FontSize="24" />
+                                        <Label Text="{Binding Description}" />
 
                                         <Label 
                                             Text="Icon" 
@@ -137,13 +122,13 @@
                                 </ScrollView>
                             </Grid>
                             <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}"/>
-                        </Border.GestureRecognizers>
-                    </Border>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
-      </ScrollView>
+                                <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
 
         <controls:AddButton 
             Command="{Binding AddProjectCommand}" />
