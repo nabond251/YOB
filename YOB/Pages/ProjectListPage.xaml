@@ -6,6 +6,7 @@
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:controls="clr-namespace:YOB.Pages.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:fonts="clr-namespace:Fonts"
              x:Class="YOB.Pages.ProjectListPage"
              x:DataType="pageModels:ProjectListPageModel"
              Title="Projects">
@@ -43,9 +44,7 @@
                                         <sf:SfTextInputLayout 
                                             Hint="Category">
                                             <Picker 
-                                                ItemsSource="{Binding Categories}"
-                                                SelectedItem="{Binding Category}"
-                                                SelectedIndex="{Binding CategoryIndex}" />
+                                                SelectedItem="{Binding Category}" />
                                         </sf:SfTextInputLayout>
 
                                         <Label 
@@ -55,8 +54,7 @@
                                             HeightRequest="44" Margin="0,0,0,15"
                                             SelectionMode="Single"
                                             
-                                            SelectedItem="{Binding Icon}"
-                                            ItemsSource="{Binding Icons}">
+                                            SelectedItem="{Binding Icon}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate x:DataType="models:IconData">
                                                     <Grid RowDefinitions="Auto,4" RowSpacing="{StaticResource size60}">
@@ -106,13 +104,11 @@
                                                 Spacing="{StaticResource LayoutSpacing}" 
                                                 HeightRequest="44" 
                                                 Margin="0,0,0,15"
-                                                BindableLayout.ItemsSource="{Binding AllTags}" 
                                                 BindableLayout.ItemTemplateSelector="{StaticResource ChipDataTemplateSelector}"/>
                                         </ScrollView>
 
                                         <Button Text="Save" 
-                                                HeightRequest="{OnIdiom 44, Desktop=60}"
-                                                Command="{Binding SaveCommand}" />
+                                                HeightRequest="{OnIdiom 44, Desktop=60}" />
 
                                         <Grid HeightRequest="44">
                                             <Label 
@@ -126,8 +122,6 @@
                                                 Aspect="Center"
                                                 HeightRequest="44"
                                                 WidthRequest="44"
-                                                IsVisible="{Binding HasCompletedTasks}"
-                                                Command="{Binding CleanTasksCommand}"
                                                 />
                                         </Grid>
                                         <VerticalStackLayout 
@@ -141,8 +135,6 @@
                                         </VerticalStackLayout>
                                     </VerticalStackLayout>
                                 </ScrollView>
-
-                                <controls:AddButton Command="{Binding AddTaskCommand}" />
                             </Grid>
                             <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}"/>
