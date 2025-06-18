@@ -1,22 +1,34 @@
 #nullable disable
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
 using YOB.Data;
 using YOB.Models;
 using YOB.Services;
 
 namespace YOB.PageModels
 {
-    public partial class ProjectListPageModel : ObservableObject
+    public partial class ProjectListPageModel : ObservableObject, IProjectTaskPageModel
     {
         private readonly ProjectRepository _projectRepository;
+        private readonly TaskRepository _taskRepository;
+
+        [ObservableProperty]
+        private List<ProjectTask> _tasks = [];
 
         [ObservableProperty]
         private List<Project> _projects = [];
 
-        public ProjectListPageModel(ProjectRepository projectRepository)
+        [ObservableProperty]
+        bool _isBusy;
+
+        public bool HasCompletedTasks
+            => Tasks?.Any(t => t.IsCompleted) ?? false;
+
+        public ProjectListPageModel(ProjectRepository projectRepository, TaskRepository taskRepository)
         {
             _projectRepository = projectRepository;
+            _taskRepository = taskRepository;
         }
 
         [RelayCommand]
@@ -26,8 +38,19 @@ namespace YOB.PageModels
         }
 
         [RelayCommand]
+        private Task TaskCompleted(ProjectTask task)
+        {
+            OnPropertyChanged(nameof(HasCompletedTasks));
+            return _taskRepository.SaveItemAsync(task);
+        }
+
+        [RelayCommand]
         Task NavigateToProject(Project project)
             => Shell.Current.GoToAsync($"project?id={project.ID}");
+
+        [RelayCommand]
+        private Task NavigateToTask(ProjectTask task)
+            => Shell.Current.GoToAsync($"task?id={task.ID}");
 
         [RelayCommand]
         async Task AddProject()
