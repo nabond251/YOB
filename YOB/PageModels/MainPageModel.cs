@@ -8,7 +8,7 @@ using YOB.Services;
 
 namespace YOB.PageModels
 {
-    public partial class ProjectListPageModel : ObservableObject, IProjectTaskPageModel
+    public partial class MainPageModel : ObservableObject, IProjectTaskPageModel
     {
         private readonly ProjectRepository _projectRepository;
         private readonly TaskRepository _taskRepository;
@@ -25,7 +25,7 @@ namespace YOB.PageModels
         public bool HasCompletedTasks
             => Tasks?.Any(t => t.IsCompleted) ?? false;
 
-        public ProjectListPageModel(ProjectRepository projectRepository, TaskRepository taskRepository)
+        public MainPageModel(ProjectRepository projectRepository, TaskRepository taskRepository)
         {
             _projectRepository = projectRepository;
             _taskRepository = taskRepository;

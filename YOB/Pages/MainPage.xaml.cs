@@ -1,8 +1,8 @@
 namespace YOB.Pages
 {
-    public partial class ProjectListPage : ContentPage
+    public partial class MainPage : ContentPage
     {
-        public ProjectListPage(ProjectListPageModel model)
+        public MainPage(MainPageModel model)
         {
             BindingContext = model;
             InitializeComponent();

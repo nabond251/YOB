@@ -12,7 +12,7 @@
         <ShellContent
             Title="Projects"
             Icon="{StaticResource IconProjects}"
-            ContentTemplate="{DataTemplate pages:ProjectListPage}"
+            ContentTemplate="{DataTemplate pages:MainPage}"
             Route="projects" />
 
         <ShellContent
