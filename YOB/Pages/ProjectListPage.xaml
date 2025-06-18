@@ -32,83 +32,6 @@
                                         <Label Text="{Binding Name}" FontSize="24" />
                                         <Label Text="{Binding Description}" />
 
-                                        <Label 
-                                            Text="Icon" 
-                                            Style="{StaticResource Title2}"/>
-                                        <CollectionView 
-                                            HeightRequest="44" Margin="0,0,0,15"
-                                            SelectionMode="Single"
-                                            
-                                            SelectedItem="{Binding Icon}">
-                                            <CollectionView.ItemTemplate>
-                                                <DataTemplate x:DataType="models:IconData">
-                                                    <Grid RowDefinitions="Auto,4" RowSpacing="{StaticResource size60}">
-                                                        <VisualStateManager.VisualStateGroups>
-                                                            <VisualStateGroup x:Name="CommonStates">
-                                                                <VisualState x:Name="Normal">
-                                                                    <VisualState.Setters>
-                                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
-                                                                        <Setter TargetName="SelectedIndicator" Property="BoxView.IsVisible" Value="False"/>
-                                                                    </VisualState.Setters>
-                                                                </VisualState>
-                                                                <VisualState x:Name="Selected">
-                                                                    <VisualState.Setters>
-                                                                        <Setter Property="BackgroundColor" Value="Transparent"/>
-                                                                        <Setter Property="Background" Value="Transparent"/>
-                                                                        <Setter TargetName="SelectedIndicator" Property="BoxView.IsVisible" Value="True"/>
-                                                                    </VisualState.Setters>
-                                                                </VisualState>
-                                                            </VisualStateGroup>
-                                                        </VisualStateManager.VisualStateGroups>
-
-                                                        <Label 
-                                                            Text="{Binding Icon}" 
-                                                            x:Name="IconImage"
-                                                            FontFamily="{x:Static fonts:FluentUI.FontFamily}" 
-                                                            FontSize="24" 
-                                                            VerticalOptions="Center"
-                                                            HorizontalOptions="Center"
-                                                            SemanticProperties.Description="{Binding Description}"
-                                                            SemanticProperties.Hint="Icon representing the type of task . Tap to select"
-                                                            TextColor="{AppThemeBinding Light={StaticResource DarkOnLightBackground},Dark={StaticResource LightOnDarkBackground}}"/>
-                                                        <BoxView x:Name="SelectedIndicator" Color="{StaticResource Primary}" HeightRequest="4" HorizontalOptions="Fill" Grid.Row="1"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </CollectionView.ItemTemplate>
-                                            <CollectionView.ItemsLayout>
-                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="{StaticResource LayoutSpacing}"/>
-                                            </CollectionView.ItemsLayout>
-                                        </CollectionView>
-
-
-                                        <Label 
-                                            Text="Tags" 
-                                            Style="{StaticResource Title2}"/>
-                                        <ScrollView Orientation="Horizontal">
-                                            <HorizontalStackLayout 
-                                                Spacing="{StaticResource LayoutSpacing}" 
-                                                HeightRequest="44" 
-                                                Margin="0,0,0,15"
-                                                BindableLayout.ItemTemplateSelector="{StaticResource ChipDataTemplateSelector}"/>
-                                        </ScrollView>
-
-                                        <Button Text="Save" 
-                                                HeightRequest="{OnIdiom 44, Desktop=60}" />
-
-                                        <Grid HeightRequest="44">
-                                            <Label 
-                                                Text="Tasks" 
-                                                Style="{StaticResource Title2}" 
-                                                VerticalOptions="Center"/>
-                                            <ImageButton 
-                                                Source="{StaticResource IconClean}"
-                                                HorizontalOptions="End"
-                                                VerticalOptions="Center"
-                                                Aspect="Center"
-                                                HeightRequest="44"
-                                                WidthRequest="44"
-                                                />
-                                        </Grid>
                                         <VerticalStackLayout 
                                             Spacing="{StaticResource LayoutSpacing}"
                                             BindableLayout.ItemsSource="{Binding Tasks}">
@@ -121,9 +44,6 @@
                                     </VerticalStackLayout>
                                 </ScrollView>
                             </Grid>
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}"/>
-                            </Border.GestureRecognizers>
                         </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
