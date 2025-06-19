@@ -39,8 +39,8 @@ namespace YOB
             builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
-            builder.Services.AddSingleton<ManageMetaPageModel>();
 
+            builder.Services.AddSingletonWithShellRoute<ManageMetaPage, ManageMetaPageModel>("settings");
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 

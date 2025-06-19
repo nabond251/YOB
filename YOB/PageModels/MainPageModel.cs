@@ -38,6 +38,10 @@ namespace YOB.PageModels
         }
 
         [RelayCommand]
+        private Task NavigateToSettings()
+            => Shell.Current.GoToAsync("settings");
+
+        [RelayCommand]
         private Task TaskCompleted(ProjectTask task)
         {
             OnPropertyChanged(nameof(HasCompletedTasks));
