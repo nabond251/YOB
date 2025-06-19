@@ -8,19 +8,11 @@
     Shell.FlyoutBehavior="Disabled"
     Title="YOB">
 
-    <TabBar>
-        <ShellContent
-            Title="Projects"
-            Icon="{StaticResource IconProjects}"
-            ContentTemplate="{DataTemplate pages:MainPage}"
-            Route="projects" />
-
-        <ShellContent
-            Title="Manage Meta"
-            Icon="{StaticResource IconMeta}"
-            ContentTemplate="{DataTemplate pages:ManageMetaPage}"
-            Route="manage" />
-    </TabBar>
+    <ShellContent
+        Title="Projects"
+        Icon="{StaticResource IconProjects}"
+        ContentTemplate="{DataTemplate pages:MainPage}"
+        Route="projects" />
 
     <Shell.FlyoutFooter>
         <Grid Padding="15">
