@@ -19,6 +19,9 @@ namespace YOB.PageModels
         [ObservableProperty]
         private ObservableCollection<Tag> _tags = [];
 
+        [ObservableProperty]
+        private string version = string.Empty;
+
         public ManageMetaPageModel(CategoryRepository categoryRepository, TagRepository tagRepository, SeedDataService seedDataService)
         {
             _categoryRepository = categoryRepository;
@@ -32,6 +35,7 @@ namespace YOB.PageModels
             Categories = new ObservableCollection<Category>(categoriesList);
             var tagsList = await _tagRepository.ListAsync();
             Tags = new ObservableCollection<Tag>(tagsList);
+            Version = AppInfo.Current.VersionString;
         }
 
         [RelayCommand]
