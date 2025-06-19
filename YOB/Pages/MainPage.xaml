@@ -17,6 +17,16 @@
                 EventName="Appearing"                
                 Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Settings"
+            Command="{Binding NavigateToSettingsCommand}"
+            Order="Primary"
+            Priority="0"
+            IconImageSource="{StaticResource IconSettings}" />
+    </ContentPage.ToolbarItems>
+
     <Grid>
         <ScrollView>
             <VerticalStackLayout 
