@@ -40,7 +40,7 @@ namespace YOB
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
 
-            builder.Services.AddSingletonWithShellRoute<ManageMetaPage, ManageMetaPageModel>("settings");
+            builder.Services.AddSingletonWithShellRoute<SettingsPage, SettingsPageModel>("settings");
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 

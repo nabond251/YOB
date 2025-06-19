@@ -7,7 +7,7 @@ using YOB.Services;
 
 namespace YOB.PageModels
 {
-    public partial class ManageMetaPageModel : ObservableObject
+    public partial class SettingsPageModel : ObservableObject
     {
         private readonly CategoryRepository _categoryRepository;
         private readonly TagRepository _tagRepository;
@@ -22,7 +22,7 @@ namespace YOB.PageModels
         [ObservableProperty]
         private string version = string.Empty;
 
-        public ManageMetaPageModel(CategoryRepository categoryRepository, TagRepository tagRepository, SeedDataService seedDataService)
+        public SettingsPageModel(CategoryRepository categoryRepository, TagRepository tagRepository, SeedDataService seedDataService)
         {
             _categoryRepository = categoryRepository;
             _tagRepository = tagRepository;

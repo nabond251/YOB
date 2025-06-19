@@ -1,8 +1,8 @@
 namespace YOB.Pages
 {
-    public partial class ManageMetaPage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public ManageMetaPage(ManageMetaPageModel model)
+        public SettingsPage(SettingsPageModel model)
         {
             InitializeComponent();
             BindingContext = model;
