@@ -180,7 +180,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <controls:AddButton Command="{Binding AddTaskCommand}" />
+        <controls:CalendarButton Command="{Binding AddTaskCommand}" />
     </Grid>
     
 </ContentPage>

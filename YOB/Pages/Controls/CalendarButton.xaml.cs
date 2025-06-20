@@ -1,8 +1,8 @@
 namespace YOB.Pages.Controls
 {
-    public partial class AddButton
+    public partial class CalendarButton
     {
-        public AddButton()
+        public CalendarButton()
         {
             InitializeComponent();
         }
