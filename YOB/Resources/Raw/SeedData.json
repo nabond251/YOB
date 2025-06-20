@@ -1,50 +1,57 @@
 {
     "Projects": [
         {
-            "Name": "Balance",
-            "Description": "Improve work-life balance.",
+            "Name": "1/1",
+            "Description": "Gen 1-3; Matt 1",
             "Icon": "\uea28",
             "Category": { "Title": "work", "Color": "#3068df" },
             "Tags": [
                 { "Title": "work", "Color": "#3068df" }
             ],
             "Tasks": [
-                { "Title": "Survey Employees", "IsCompleted": false },
-                { "Title": "Analyze Survey Results", "IsCompleted": false },
-                { "Title": "Develop Action Plan", "IsCompleted": false }
+                { "Title": "Genesis 1", "IsCompleted": false },
+                { "Title": "Genesis 2", "IsCompleted": false },
+                { "Title": "Genesis 3", "IsCompleted": false },
+                { "Title": "Matthew 1", "IsCompleted": false }
             ]
         },
         {
-            "Name": "Personal",
-            "Description": "Learn to speak another language.",
+            "Name": "1/2",
+            "Description": "Gen 4-8; Matt 2-3",
             "Icon": "\uf8fe",
             "Category": { "Title": "education", "Color": "#8800FF" },
             "Tags": [
                 { "Title": "personal", "Color": "#FF4500" }
             ],
             "Tasks": [
-                { "Title": "Read a Book", "IsCompleted": false },
-                { "Title": "Attend a Workshop", "IsCompleted": false },
-                { "Title": "Practice a Hobby", "IsCompleted": false }
+                { "Title": "Genesis 4", "IsCompleted": false },
+                { "Title": "Genesis 5", "IsCompleted": false },
+                { "Title": "Genesis 6", "IsCompleted": false },
+                { "Title": "Genesis 7", "IsCompleted": false },
+                { "Title": "Genesis 8", "IsCompleted": false },
+                { "Title": "Matthew 2", "IsCompleted": false },
+                { "Title": "Matthew 3", "IsCompleted": false }
             ]
         },
         {
-            "Name": "Fitness",
-            "Description": "Promote health and fitness activities",
+            "Name": "1/3",
+            "Description": "Gen 9-12; Matt 4",
             "Icon": "\uf837",
             "Category": { "Title": "self", "Color": "#FF3300" },
             "Tags": [
                 { "Title": "health", "Color": "#32CD32" }
             ],
             "Tasks": [
-                { "Title": "Morning Yoga", "IsCompleted": false },
-                { "Title": "Evening Run", "IsCompleted": false },
-                { "Title": "Healthy Cooking Class", "IsCompleted": false }
+                { "Title": "Genesis 9", "IsCompleted": false },
+                { "Title": "Genesis 10", "IsCompleted": false },
+                { "Title": "Genesis 11", "IsCompleted": false },
+                { "Title": "Genesis 12", "IsCompleted": false },
+                { "Title": "Matthew 4", "IsCompleted": false }
             ]
         },
         {
-            "Name": "Family and Friends",
-            "Description": "Strengthen relationships with family and friends.",
+            "Name": "1/6",
+            "Description": "Gen 13-16; Matt 5",
             "Icon": "\uf5a9",
             "Category": { "Title": "relationships", "Color": "#FF9900" },
             "Tags": [
@@ -52,9 +59,11 @@
                 { "Title": "friends", "Color": "#FF69B4" }
             ],
             "Tasks": [
-                { "Title": "Plan a Family Reunion", "IsCompleted": false },
-                { "Title": "Organize a Friends' Get-together", "IsCompleted": false },
-                { "Title": "Weekly Phone Calls", "IsCompleted": false }
+                { "Title": "Genesis 13", "IsCompleted": false },
+                { "Title": "Genesis 14", "IsCompleted": false },
+                { "Title": "Genesis 15", "IsCompleted": false },
+                { "Title": "Genesis 16", "IsCompleted": false },
+                { "Title": "Matthew 5", "IsCompleted": false }
             ]
         }
     ]
