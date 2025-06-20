@@ -1,6 +1,3 @@
-﻿using YOB.Models;
-using YOB.PageModels;
-
 namespace YOB.Pages
 {
     public partial class MainPage : ContentPage
