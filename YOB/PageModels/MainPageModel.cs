@@ -18,9 +18,6 @@ namespace YOB.PageModels
         private readonly SeedDataService _seedDataService;
 
         [ObservableProperty]
-        private List<ProjectTask> _tasks = [];
-
-        [ObservableProperty]
         private List<Project> _projects = [];
 
         [ObservableProperty]
@@ -29,14 +26,12 @@ namespace YOB.PageModels
         [ObservableProperty]
         bool _isRefreshing;
 
-        public bool HasCompletedTasks
-            => Tasks?.Any(t => t.IsCompleted) ?? false;
-
         public MainPageModel(SeedDataService seedDataService, ProjectRepository projectRepository,
             TaskRepository taskRepository, ModalErrorHandler errorHandler)
         {
             _projectRepository = projectRepository;
             _taskRepository = taskRepository;
+            _errorHandler = errorHandler;
             _seedDataService = seedDataService;
         }
 
@@ -47,30 +42,10 @@ namespace YOB.PageModels
                 IsBusy = true;
 
                 Projects = await _projectRepository.ListAsync();
-
-                var chartData = new List<CategoryChartData>();
-                var chartColors = new List<Brush>();
-
-                var categories = await _categoryRepository.ListAsync();
-                foreach (var category in categories)
-                {
-                    chartColors.Add(category.ColorBrush);
-
-                    var ps = Projects.Where(p => p.CategoryID == category.ID).ToList();
-                    int tasksCount = ps.SelectMany(p => p.Tasks).Count();
-
-                    chartData.Add(new(category.Title, tasksCount));
-                }
-
-                TodoCategoryData = chartData;
-                TodoCategoryColors = chartColors;
-
-                Tasks = await _taskRepository.ListAsync();
             }
             finally
             {
                 IsBusy = false;
-                OnPropertyChanged(nameof(HasCompletedTasks));
             }
         }
 
@@ -130,18 +105,17 @@ namespace YOB.PageModels
         }
 
         [RelayCommand]
-        private Task NavigateToSettings()
-            => Shell.Current.GoToAsync("settings");
-
-        [RelayCommand]
         private Task TaskCompleted(ProjectTask task)
         {
-            OnPropertyChanged(nameof(HasCompletedTasks));
             return _taskRepository.SaveItemAsync(task);
         }
 
         [RelayCommand]
-        Task NavigateToProject(Project project)
+        private Task NavigateToSettings()
+            => Shell.Current.GoToAsync("settings");
+
+        [RelayCommand]
+        private Task NavigateToProject(Project project)
             => Shell.Current.GoToAsync($"project?id={project.ID}");
 
         [RelayCommand]
