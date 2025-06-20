@@ -4,8 +4,8 @@ namespace YOB.Pages
     {
         public MainPage(MainPageModel model)
         {
-            BindingContext = model;
             InitializeComponent();
+            BindingContext = model;
         }
     }
 }

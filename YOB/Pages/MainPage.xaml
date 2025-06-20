@@ -5,6 +5,7 @@
              xmlns:models="clr-namespace:YOB.Models"
              xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
              xmlns:controls="clr-namespace:YOB.Pages.Controls"
+             xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:fonts="clr-namespace:Fonts"
              x:Class="YOB.Pages.MainPage"
@@ -14,9 +15,21 @@
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
+                EventName="NavigatedTo"
+                Command="{Binding NavigatedToCommand}" />
+        <toolkit:EventToCommandBehavior
+                EventName="NavigatedFrom"
+                Command="{Binding NavigatedFromCommand}" />
+        <toolkit:EventToCommandBehavior
                 EventName="Appearing"                
                 Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -28,39 +41,46 @@
     </ContentPage.ToolbarItems>
 
     <Grid>
-        <ScrollView>
-            <VerticalStackLayout 
-                BindableLayout.ItemsSource="{Binding Projects}" 
-                Margin="{StaticResource LayoutPadding}" 
-                Spacing="{StaticResource LayoutSpacing}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:Project">
-                        <Border>
-                            <Grid>
-                                <ScrollView>
-                                    <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                                        <Label Text="{Binding Name}" FontSize="24" />
-                                        <Label Text="{Binding Description}" />
+        <pullToRefresh:SfPullToRefresh
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshCommand="{Binding RefreshCommand}">
+            <pullToRefresh:SfPullToRefresh.PullableContent>
+                <ScrollView>
+                    <VerticalStackLayout 
+                        BindableLayout.ItemsSource="{Binding Projects}" 
+                        Margin="{StaticResource LayoutPadding}" 
+                        Spacing="{StaticResource LayoutSpacing}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:Project">
+                                <Border>
+                                    <Grid>
+                                        <ScrollView>
+                                            <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
+                                                <Label Text="{Binding Name}" FontSize="24" />
+                                                <Label Text="{Binding Description}" />
 
-                                        <VerticalStackLayout 
-                                            Spacing="{StaticResource LayoutSpacing}"
-                                            BindableLayout.ItemsSource="{Binding Tasks}">
-                                            <BindableLayout.ItemTemplate>
-                                                <DataTemplate>
-                                                    <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
-                                                </DataTemplate>
-                                            </BindableLayout.ItemTemplate>
-                                        </VerticalStackLayout>
-                                    </VerticalStackLayout>
-                                </ScrollView>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
-        </ScrollView>
+                                                <VerticalStackLayout 
+                                                    Spacing="{StaticResource LayoutSpacing}"
+                                                    BindableLayout.ItemsSource="{Binding Tasks}">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </VerticalStackLayout>
+                                            </VerticalStackLayout>
+                                        </ScrollView>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </pullToRefresh:SfPullToRefresh.PullableContent>
+        </pullToRefresh:SfPullToRefresh>
 
         <controls:AddButton 
+            IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
             Command="{Binding AddProjectCommand}" />
     </Grid>
 </ContentPage>
