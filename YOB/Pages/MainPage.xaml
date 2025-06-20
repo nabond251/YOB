@@ -54,8 +54,10 @@
                                     <Grid>
                                         <ScrollView>
                                             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                                                <Label Text="{Binding Name}" FontSize="24" />
-                                                <Label Text="{Binding Description}" />
+                                                <HorizontalStackLayout>
+                                                    <Label Text="{Binding Name}" FontSize="24" Padding="{StaticResource LayoutPadding}" />
+                                                    <Label Text="{Binding Description}" VerticalOptions="Center" />
+                                                </HorizontalStackLayout>
 
                                                 <VerticalStackLayout 
                                                     Spacing="{StaticResource LayoutSpacing}"
