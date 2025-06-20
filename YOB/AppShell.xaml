@@ -11,6 +11,6 @@
         Title="Projects"
         Icon="{StaticResource IconProjects}"
         ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="projects" />
+        Route="main" />
 
 </Shell>
