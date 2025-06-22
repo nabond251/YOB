@@ -21,8 +21,15 @@ namespace YOB.Models
         public override string ToString() => $"{Name}";
     }
 
-    public class ProjectsJson
+    public class DaysJson
     {
-        public List<Project> Projects { get; set; } = [];
+        public List<DayJson> Days { get; set; } = [];
+    }
+
+    public class DayJson
+    {
+        public DateTime Date { get; set; }
+
+        public string Passages { get; set; } = null!;
     }
 }
