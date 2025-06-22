@@ -51,7 +51,7 @@ namespace YOB.Data
 
                         var project = new Project()
                         {
-                            Name = day.Date.ToString(),
+                            Name = day.Date,
                             Description = day.Passages,
                         };
                         await _projectRepository.SaveItemAsync(project);

@@ -28,7 +28,7 @@ namespace YOB.Models
 
     public class DayJson
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; } = null!;
 
         public string Passages { get; set; } = null!;
     }
