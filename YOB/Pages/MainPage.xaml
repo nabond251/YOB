@@ -43,8 +43,9 @@
             IsRefreshing="{Binding IsRefreshing}"
             RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
-                <ScrollView>
+                <ScrollView x:Name="DayScroller">
                     <VerticalStackLayout 
+                        x:Name="Days"
                         BindableLayout.ItemsSource="{Binding Projects}" 
                         Margin="{StaticResource LayoutPadding}" 
                         Spacing="{StaticResource LayoutSpacing}">
@@ -81,6 +82,6 @@
 
         <controls:CalendarButton 
             IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
-            Command="{Binding AddProjectCommand}" />
+            Clicked="CalendarButton_Clicked" />
     </Grid>
 </ContentPage>
