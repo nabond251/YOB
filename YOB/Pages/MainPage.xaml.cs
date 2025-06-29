@@ -10,8 +10,47 @@ namespace YOB.Pages
             BindingContext = model;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (this.BindingContext is MainPageModel pageModel)
+            {
+                pageModel.PropertyChanged += this.PageModel_PropertyChanged;
+            }
+        }
+
+        protected override void OnDisappearing()
+        {
+            if (this.BindingContext is MainPageModel pageModel)
+            {
+                pageModel.PropertyChanged -= this.PageModel_PropertyChanged;
+            }
+
+            base.OnDisappearing();
+        }
+
+        private async void PageModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (this.GetDayItem() is Element item)
+            {
+                await Task.Delay(100);
+                await this.DayScroller.ScrollToAsync(item, ScrollToPosition.Start, false);
+            }
+        }
+
         private async void CalendarButton_Clicked(object sender, EventArgs e)
         {
+            if (this.GetDayItem() is Element item)
+            {
+                await this.DayScroller.ScrollToAsync(item, ScrollToPosition.Start, true);
+            }
+        }
+
+        private Element? GetDayItem()
+        {
+            Element? retVal = null;
+
             var now = DateTime.Now.Date;
             if (this.BindingContext is MainPageModel pageModel &&
                 pageModel.Projects.FirstOrDefault(
@@ -21,8 +60,10 @@ namespace YOB.Pages
                 index >= 0 &&
                 this.Days[index] is Element item)
             {
-                await this.DayScroller.ScrollToAsync(item, ScrollToPosition.Start, true);
+                retVal = item;
             }
+
+            return retVal;
         }
     }
 }
