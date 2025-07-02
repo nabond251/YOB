@@ -115,8 +115,17 @@ namespace YOB.PageModels
             => Shell.Current.GoToAsync($"project?id={project.ID}");
 
         [RelayCommand]
-        private Task NavigateToTask(ProjectTask task)
-            => Shell.Current.GoToAsync($"task?id={task.ID}");
+        private static async Task NavigateToTask(ProjectTask task)
+        {
+            var tokens = task.Title.Split(" ");
+            if (tokens.Length != 0)
+            {
+                var book = task.Title.Replace(" ", null)[..3];
+                var chapter = tokens[^1];
+                Uri uri = new Uri($"https://www.bible.com/bible/111/{book}.{chapter}");
+                await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+        }
 
         [RelayCommand]
         async Task AddProject()
