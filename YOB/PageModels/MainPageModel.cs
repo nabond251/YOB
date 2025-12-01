@@ -121,6 +121,11 @@ namespace YOB.PageModels
             if (tokens.Length != 0)
             {
                 var book = task.Title.Replace(" ", null)[..3];
+                book = book switch
+                {
+                    "Eze" => "Ezk",
+                    _ => book,
+                };
                 var chapter = tokens[^1];
                 Uri uri = new Uri($"https://www.bible.com/bible/59/{book}.{chapter}");
                 await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
