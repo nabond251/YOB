@@ -124,6 +124,11 @@ namespace YOB.PageModels
                 book = book switch
                 {
                     "Eze" => "Ezk",
+                    "Joe" => "Jol",
+                    "Nah" => "Nam",
+                    "1Jo" => "1Jn",
+                    "2Jo" => "2Jn",
+                    "3Jo" => "3Jn",
                     _ => book,
                 };
                 var chapter = tokens[^1];
